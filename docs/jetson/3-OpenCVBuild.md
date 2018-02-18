@@ -22,3 +22,14 @@ cd buildOpenCVTX2
 ```
 ./buildOpenCV.sh
 ```
+```
+cd /home/opencv/build
+make
+```
+This should ensure that everything has been built.
+
+After this, you can install the new build:
+```
+cd $HOME/opencv/build
+sudo make install
+```
