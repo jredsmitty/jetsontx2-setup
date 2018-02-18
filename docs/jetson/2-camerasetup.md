@@ -5,13 +5,15 @@ Please download the driver patch, kernel code and gcc tool chain from links belo
 Drivers: [Download Link](https://www.dropbox.com/sh/dzn01wte5akuwb1/AACqfpVqQpWfJ5tP4rSE8FFua?dl=0)
 Download drivers on both the jetson and host machine. 
 
+**Open drivers zip from downlaods and from new window that opens select all and drag to downloads**
+
 
 ------Setup the driver on TX2
 
-
+**NOTE: Go to Step 2**
 
 1. Download the L4T R28.1 for TX2 from link below and follow the quick start guide to flash the R28.1 image to TX2.
-NOTE: go to 2
+
 
 
 [Download Link](https://www.dropbox.com/sh/8p3kgws42csrulu/AADYMwGXYE2_qKjtPLVDawgta?dl=0)
@@ -20,10 +22,14 @@ NOTE: go to 2
 
 Note: You can also download the Jetpack 3.1 (which includes the L4T R28.1) from Nvidia website and install it to TX2 if needed.
 
-If you already flashed the TX2 OS image, you can skip step 1.
+**If you already flashed the TX2 OS image, you can skip step 1.**
 
 
 2. After boot up, copy Image and zImage (in driver download) to /boot on TX2.
+```
+sudo cp /home/nvidia/Downloads/Binaries/Image /boot
+sudo cp /home/nvidia/Downloads/Binaries/zImage /boot
+```
 
 3. copy 4.4.38-tegra-leopard.tgz to /lib/modules on TX2.
 
@@ -41,9 +47,11 @@ If you already flashed the TX2 OS image, you can skip step 1.
 
    sudo chown root:root /var/nvidia/nvcam/settings/camera_overrides.isp
 
-5. Reboot TX2 and Put your system into "reset recovery mode" again by holding down the RECOVER (S3) button and press the RESET (S1) button once on the EVA board.
+5. Connect the TX1 to your host PC with USB cable
 
-6. Connect the TX1 to your host PC with USB cable, and do
+6. Reboot TX2 and Put your system into "reset recovery mode" again by holding down the RECOVER (S3) button and press the RESET (S1) button once on the EVA board.
+
+**On Host in Terminal**
 
    ```
    lsusb
@@ -54,7 +62,8 @@ If you already flashed the TX2 OS image, you can skip step 1.
 
 NOTE: Path to linux for tegra - home/"yourjetpackfolder"/64_TX2/Linux_for_Tegra_tx2/kernel/dtb
       rename current tegra186-quill-p3310-1000-c03-00-base.dtb to tegra186-quill-p3310-1000-c03-00-base.dtb.old with
-      a right click and rename. Then copy and past 
+      a right click and rename. Then copy and past the new tegra186-quill-p3310-1000-c03-00-base.dtb from the driver download
+      to home/"yourjetpackfolder"/64_TX2/Linux_for_Tegra_tx2/kernel/dtb
 
 8. In termianl
    ```
@@ -99,17 +108,27 @@ Download the files from link below.
    tar zxvf argus_R28.1.tgz
    ```
 
-8. cd argus
-
-9. mkdir build && cd build
-
-10. cmake ..
-
-11. make
-
-12. sudo make install
-
-13. In terminal
+8. 
+```
+cd argus
+```
+9. 
+```
+mkdir build && cd build
+```
+10. 
+```
+cmake ..
+```
+11. 
+```
+make
+```
+12. 
+```
+sudo make install
+```
+13.
 ```
 "argus_camera --device=0”, “argus_camera --device=1” and “argus_camera --device=2”to get the video output. 
 ```
