@@ -49,7 +49,7 @@ sudo cp /home/nvidia/Downloads/Binaries/zImage /boot
 
 5. Connect the TX1 to your host PC with USB cable
 
-6. Reboot TX2 and Put your system into "reset recovery mode" again by holding down the RECOVER (S3) button and press the RESET (S1) button once on the EVA board.
+6. Reboot TX2 and Put your system into "reset recovery mode" again by holding down the RECOVER (S3) button (2nd from last on right) and press the RESET (S1) button (very left button) once on the jetson board.
 
 **On Host in Terminal**
 
@@ -71,12 +71,6 @@ NOTE: Path to linux for tegra - home/"yourjetpackfolder"/64_TX2/Linux_for_Tegra_
    sudo ./flash.sh -r -k kernel-dtb jetson-tx2 mmcblk0p1
    ```
 5. Reboot the TX2
-
-6. Open a terminal and do "nvgstcapture-1.0”. You can will get live video output.
-
-
-Note: Please make sure there is a camera on J3.
-
 
 
 ------Setup Argus software
@@ -132,4 +126,3 @@ sudo make install
 ```
 "argus_camera --device=0”, “argus_camera --device=1” and “argus_camera --device=2”to get the video output. 
 ```
-
